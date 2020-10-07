@@ -47,100 +47,14 @@
             <div class="row">
                 <div class="col-md-12" id="Add">
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="card card-white">
-                                <div class="card-heading clearfix">
-                                    <h4 class="card-title">Add Services</h4>
-                                </div>
-                                <div class="card-body">
 
-                                    <div>
-                                        <div class="row">
-                                            <div class="col-12" id="AddService">
-                                                <div class="form-group row">
-                                                    <label class="col-sm-5 col-form-label">Service Name</label>
-                                                    <div class="col-sm-7">
-                                                        <select class="form-control">
-                                                            <option>1</option>
-                                                            <option>2</option>
-                                                            <option>3</option>
-                                                            <option>4</option>
-                                                            <option>5</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-sm-5 col-form-label">Charges</label>
-                                                    <div class="col-sm-7">
-                                                        <input type="text" class="form-control" value="20000" disabled>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-sm-5 col-form-label">Discount(if any)</label>
-                                                    <div class="col-sm-7">
-                                                        <input type="text" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <button class="btn btn-outline-primary float-right" type="submit">Add</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card card-white">
-                                <div class="card-heading clearfix">
-                                    <h4 class="card-title">Add Items</h4>
-                                </div>
-                                <div class="card-body">
 
-                                    <div>
-                                        <div class="row">
-                                            <div class="col-12" id="AddItem">
-                                                <div class="form-group row">
-                                                    <label class="col-sm-5 col-form-label">Item Name</label>
-                                                    <div class="col-sm-7">
-                                                        <select class="form-control">
-                                                            <option>1</option>
-                                                            <option>2</option>
-                                                            <option>3</option>
-                                                            <option>4</option>
-                                                            <option>5</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-sm-5 col-form-label">Item No</label>
-                                                    <div class="col-sm-7">
-                                                        <select class="form-control">
-                                                            <option>1</option>
-                                                            <option>2</option>
-                                                            <option>3</option>
-                                                            <option>4</option>
-                                                            <option>5</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-sm-5 col-form-label">Qty</label>
-                                                    <div class="col-sm-7">
-                                                        <input type="text" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <label class="col-sm-5 col-form-label">Rate</label>
-                                                    <div class="col-sm-7">
-                                                        <input type="text" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <button class="btn btn-outline-primary float-right" type="submit">Add</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @{Html.RenderAction("ACInvService","VendorDashboard",new {fuelTypeID= @Model.FuelTypeId , UnitTypeID= @Model.UnitTypeId});}
+                        @{Html.RenderAction("ACInvItems","VendorDashboard",new {fuelTypeID= @Model.FuelTypeId , UnitTypeID= @Model.UnitTypeId});}
+                        @*@{Html.RenderAction("ACInvService", "VendorDashboard");}
+                        @{Html.RenderAction("ACInvItems","VendorDashboard");}*@
+
+
                     </div>
                 </div>
             </div>

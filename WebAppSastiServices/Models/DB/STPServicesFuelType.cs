@@ -18,6 +18,8 @@ namespace WebAppSastiServices.Models.DB
         public STPServicesFuelType()
         {
             this.STPOrders = new HashSet<STPOrder>();
+            this.STPProductItems = new HashSet<STPProductItem>();
+            this.STPServices = new HashSet<STPService>();
             this.TRNCustomerOrders = new HashSet<TRNCustomerOrder>();
         }
     
@@ -28,6 +30,10 @@ namespace WebAppSastiServices.Models.DB
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<STPOrder> STPOrders { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<STPProductItem> STPProductItems { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<STPService> STPServices { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TRNCustomerOrder> TRNCustomerOrders { get; set; }
         public virtual STPServiceType STPServiceType { get; set; }

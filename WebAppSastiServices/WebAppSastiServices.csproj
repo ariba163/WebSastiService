@@ -164,6 +164,7 @@
     <Content Include="DataTables\js\jquery.dataTables.js" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="img\ajax-loader.gif" />
     <Content Include="img\avatar\avatar-01.jpg" />
     <Content Include="img\avatar\avatar-02.jpg" />
     <Content Include="img\avatar\avatar-03.jpg" />
@@ -319,6 +320,9 @@
     <Content Include="img\Dashboard\screen-bg.jpg" />
     <Content Include="img\Dashboard\signature-black.png" />
     <Content Include="img\Dashboard\timeline-banner.jpg" />
+    <Content Include="img\products\Generators\alternater-fans_10574836_250x250-250x250.jpg" />
+    <Content Include="img\products\Generators\generator-valve.jpg" />
+    <Content Include="img\products\Generators\genset-rb-radiators-500x500.jpg" />
     <Content Include="img\services\ac.jpg" />
     <Content Include="img\services\cctv.png" />
     <Content Include="img\services\powergen.jpg" />
@@ -755,10 +759,16 @@
     <Compile Include="Models\DB\STPBanner.cs">
       <DependentUpon>ModelSastiService.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DB\STPBannerOffer.cs">
+      <DependentUpon>ModelSastiService.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DB\STPOrder.cs">
       <DependentUpon>ModelSastiService.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DB\STPPrefferedTime.cs">
+      <DependentUpon>ModelSastiService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB\STPProductBrand.cs">
       <DependentUpon>ModelSastiService.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DB\STPProductItem.cs">
@@ -977,9 +987,10 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\pvGetInTouch.cshtml" />
     <Content Include="Views\Home\pvQuickCall.cshtml" />
-    <Content Include="Views\Home\pvServiceModal.cshtml" />
     <Content Include="Views\Home\PVservices.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\VendorDashboard\ACInvService.cshtml" />
+    <Content Include="Views\VendorDashboard\ACInvItems.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

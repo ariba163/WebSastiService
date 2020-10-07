@@ -1,4 +1,4 @@
-﻿
+﻿@model WebAppSastiServices.Models.DB.STPService
 @{
     ViewBag.Title = "EditServices";
     Layout = "~/Views/Shared/_LayoutDashboardACVendor.cshtml";
@@ -21,56 +21,64 @@
                                 <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
                                 </div>
                             </div>
-                            <form>
-                                <div>
-                                    <div class=" fade show active" id="home3">
-                                        <div class="row m-b-lg">
-                                            <div class="col-md-12">
-                                                <div class="row">
-                                                    <div class="form-group col-md-6">
-                                                        <label for="ServiceName">Service Name</label>
-                                                        <input type="text" class="form-control" name="ServiceName" id="ServiceName" placeholder="Service Name">
-                                                    </div>
-                                                    <div class="form-group col-md-6 form-row">
-                                                        <label for="ItemsName" class="col-12">Items Name</label>
-                                                        <a class="btn btn-primary col-2" href="#" role="button"><i class="fa fa-plus"></i></a>
-                                                        <select class="form-control col-8" id="ItemsName">
-                                                            <option>Oil Filter</option>
-                                                            <option>Gas Filter</option>
-                                                            <option>Engine oil</option>
-                                                        </select>
-                                                        <a class="btn btn-primary col-2" href="#" role="button"><i class="fa fa-minus"></i></a>
-                                                    </div>
-                                                    <div class="form-group col-md-6">
-                                                        <label for="FuelType">Fuel type</label>
-                                                        <select class="form-control" id="FuelType">
-                                                            <option>Petrol</option>
-                                                            <option>Gas</option>
-                                                            <option>Diesal</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group col-md-6">
-                                                        <label for="Power">Power</label>
-                                                        <select class="form-control" id="Power">
-                                                            <option>Range   - unit</option>
-                                                            <option>Range   - unit</option>
-                                                            <option>Range   - unit</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group col-md-12">
-                                                        <label for="Rate">Service Rate</label>
-                                                        <input type="number" class="form-control" name="Rate" id="Rate" placeholder="Service Rate">
-                                                    </div>
+
+                            @using (Html.BeginForm("ACCreateServices", "VendorDashboard", FormMethod.Post, new { @enctype = "multipart/form-data" })) {
+                                         <div>
+                                <div class="fade show active" id="home3">
+                                    <div class="row m-b-lg">
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="form-group col-md-6">
+                                                    @Html.LabelFor(model => model.ServiceName, "Service Name", htmlAttributes: new { @class = "control-label" })
+                                                    @Html.EditorFor(model => model.ServiceName, new { htmlAttributes = new { @class = "form-control input-md" } })
+                                                    @Html.ValidationMessageFor(model => model.ServiceName, "", new { @class = "text-danger" })
+                                                    @*<label for="ServiceName">Service Name</label>
+                                <input type="text" class="form-control" name="ServiceName" id="ServiceName" placeholder="Service Name">*@
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    @Html.LabelFor(model => model.ServiceDescrption, "Service Descrption", htmlAttributes: new { @class = "control-label" })
+                                                    @Html.EditorFor(model => model.ServiceDescrption, new { htmlAttributes = new { @class = "form-control input-md" } })
+                                                    @Html.ValidationMessageFor(model => model.ServiceDescrption, "", new { @class = "text-danger" })
+                                                    @*<label for="ServiceName">Service Name</label>
+                                <input type="text" class="form-control" name="ServiceName" id="ServiceName" placeholder="Service Name">*@
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    @Html.LabelFor(model => model.FuelTypeId, "Fuel Type", htmlAttributes: new { @class = "control-label" })
+                                                    @Html.DropDownList("FuelTypeId", (SelectList)ViewBag.FuelType, htmlAttributes: new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.FuelTypeId, "", new { @class = "text-danger" })
+                                                    @*<label for="FuelType">Fuel type</label>
+                                <select class="form-control" id="FuelType">
+                                    <option>Petrol</option>
+                                    <option>Gas</option>
+                                    <option>Diesal</option>
+                                </select>*@
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    @Html.LabelFor(model => model.UnitTypeId, "Unit Type", htmlAttributes: new { @class = "control-label" })
+                                                    @Html.DropDownList("UnitTypeId", (SelectList)ViewBag.UnitType, htmlAttributes: new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.UnitTypeId, "", new { @class = "text-danger" })
+                                                    @*<label for="Power">Power</label>
+                                <select class="form-control" id="Power">
+                                    <option>Range   - unit</option>
+                                    <option>Range   - unit</option>
+                                    <option>Range   - unit</option>
+                                </select>*@
+                                                </div>
+                                                <div class="form-group col-md-12">
+                                                    @Html.LabelFor(model => model.ServiceRate, "Service Rate", htmlAttributes: new { @class = "control-label" })
+                                                    @Html.EditorFor(model => model.ServiceRate, new { htmlAttributes = new { @class = "form-control input-md" } })
+                                                    @Html.ValidationMessageFor(model => model.ServiceRate, "", new { @class = "text-danger" })
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <ul class="pagination wizard">
-                                        <li class="previous"><a href="#" class="btn btn-outline-primary">Previous</a></li>
-                                        <li class="next ml-auto"><a href="#" class="btn btn-outline-primary">Add</a></li>
-                                    </ul>
                                 </div>
-                            </form>
+                                <ul class="pagination wizard">
+                                    <li class="previous"><a href="#" class="btn btn-outline-primary">Previous</a></li>
+                                    <li class="next ml-auto"><button href="#" type="submit" class="btn btn-outline-primary">Add</button></li>
+                                </ul>
+                            </div>
+                            }
                         </div>
 
                     </div>

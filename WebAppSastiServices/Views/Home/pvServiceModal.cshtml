@@ -1,4 +1,4 @@
-﻿@model WebAppSastiServices.Models.DB.STPOrder
+﻿@model WebAppSastiServices.Models.DB.TRNCustomerOrder
 
 
 
@@ -28,7 +28,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="control-label" for="name">Name</label>
-                                @Html.TextBoxFor(m => m.Name, new { @placeholder = "Name", @id = "name", @type = "text", @class = "form-control input-md" })
+                                @Html.TextBoxFor(m => m.CustomerName, new { @placeholder = "Name", @id = "name", @type = "text", @class = "form-control input-md" })
                                 @*<input id="name" name="name" type="text" placeholder="Name" class="form-control input-md">*@
                             </div>
                         </div>
@@ -53,7 +53,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="Details">Details</label>
-                                @Html.TextAreaFor(m => m.Description, new { @class = "form-control", @id = "Details", @placeholder = "Details", @rows = "3" })
+                                @Html.TextAreaFor(m => m.OrderDescription, new { @class = "form-control", @id = "Details", @placeholder = "Details", @rows = "3" })
                                 @*<textarea class="form-control" id="Details" rows="3"></textarea>*@
                             </div>
                         </div>
@@ -61,7 +61,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="control-label" for="date">Preferred Date</label>
-                                @Html.TextBoxFor(m => m.PrefferedDate, new { @placeholder = "Preferred Date", @id = "Date", @type = "date", @class = "form-control input-md" })
+                                @Html.TextBoxFor(m => m.preferredDate, new { @placeholder = "Preferred Date", @id = "Date", @type = "date", @class = "form-control input-md" })
                                 @*<input id="date" name="date" type="date" placeholder="Preferred Date" class="form-control input-md">*@
                             </div>
                         </div>

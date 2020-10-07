@@ -22,16 +22,21 @@ namespace WebAppSastiServices.Models.DB
     
         public int ID { get; set; }
         public string ProductName { get; set; }
+        public string ItemNo { get; set; }
         public string ProductDescription { get; set; }
-        public int STPProductTypeID { get; set; }
+        public int STPProductBrandID { get; set; }
         public bool IsAvailible { get; set; }
-        public Nullable<System.DateTime> CreatedDateTime { get; set; }
+        public System.DateTime CreatedDateTime { get; set; }
         public string ImageFilePath { get; set; }
         public decimal CostPrice { get; set; }
         public decimal SellingPrice { get; set; }
-        public Nullable<decimal> SpecialDiscount { get; set; }
+        public decimal SpecialDiscount { get; set; }
+        public int FuelTypeId { get; set; }
+        public int UnitTypeId { get; set; }
     
         public virtual STPProductType STPProductType { get; set; }
+        public virtual STPServicesFuelType STPServicesFuelType { get; set; }
+        public virtual STPServicesUnitType STPServicesUnitType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<STPService> STPServices { get; set; }
     }

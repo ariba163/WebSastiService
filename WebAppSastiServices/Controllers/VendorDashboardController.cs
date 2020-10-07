@@ -109,10 +109,6 @@ namespace WebAppSastiServices.Controllers
 
 
             return Json(result, JsonRequestBehavior.AllowGet);
-            //var Orders = (from d in db.TRNCustomerOrders
-            //              where d.STPStatu.Description == "Not Availed" && d.STPServiceType.ServiceTypeName == "Air Condition"
-            //              select d).ToList();
-            //return View(Orders);
         }
 
 
@@ -133,6 +129,24 @@ namespace WebAppSastiServices.Controllers
 
             return View(order);
         }
+
+         public ActionResult ACInvService(int fuelTypeID,int unitTypeID )
+         {
+
+            ViewBag.Services = new SelectList(db.STPServices.Where(f =>  f.UnitTypeId == unitTypeID && f.FuelTypeId == fuelTypeID), "ID", "ServiceName");
+            
+            return View();
+        }
+        
+         public ActionResult ACInvItems(int fuelTypeID, int unitTypeID)
+        {
+            ViewBag.Products = new SelectList(db.STPProductItems.Where(f => f.UnitTypeId == unitTypeID && f.FuelTypeId == fuelTypeID), "ID", "ProductName");
+
+            return View();
+        }
+
+
+
         public ActionResult ACLogin()
         {
             return View();
@@ -145,14 +159,74 @@ namespace WebAppSastiServices.Controllers
         {
             return View();
         }
+
+        public ActionResult ACServiceData()
+        {
+
+            var services = (from o in db.STPServices
+                            join s in db.STPServiceTypes on o.STPServiceTypeID equals s.ID
+                            join f in db.STPServicesFuelTypes on o.FuelTypeId equals f.ID
+                            join u in db.STPServicesUnitTypes on o.UnitTypeId equals u.ID
+                            where (o.STPServiceType.ServiceTypeName == "Air Condition")
+                            select new
+                            {
+                                ServiceName = o.ServiceName,
+                                ServiceType = s.ServiceTypeName,
+                                FuelType = f.Options,
+                                UnitType = u.Options,
+                                ServiceRate=o.ServiceRate
+                            }).ToList();
+
+            return Json(services, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult ACViewServices()
         {
             return View();
         }
+        [HttpGet]
         public ActionResult ACCreateServices()
         {
+            ViewBag.UnitType = new SelectList(db.STPServicesUnitTypes.Where(s=>s.STPServiceType.ServiceTypeName== "Air Condition"),"ID", "Options"); 
+            ViewBag.FuelType = new SelectList(db.STPServicesFuelTypes.Where(s => s.STPServiceType.ServiceTypeName == "Air Condition"), "ID", "Options");
+
+
             return View();
         }
+        [HttpPost]
+        public ActionResult ACCreateServices(service obj)
+        {
+            //ViewBag.UnitType = new SelectList(db.STPServicesUnitTypes, "ID", "Options");
+            //ViewBag.FuelType = new SelectList(db.STPServicesFuelTypes, "ID", "Options");
+            STPService service = new STPService()
+            {
+                ServiceName = obj.ServiceName,
+                ServiceDescrption = obj.ServiceDescrption,
+                STPServiceTypeID = 5,
+                IsAvailible = true,
+                FuelTypeId = obj.FuelTypeId,
+                UnitTypeId = obj.UnitTypeId,
+                ServiceRate = obj.ServiceRate,
+                CreatedDateTime = System.DateTime.Now
+            };
+            db.STPServices.Add(service);
+            db.SaveChanges();
+
+
+            return Redirect(Url.Action("ACViewServices", "VendorDashboard")); 
+        }
+
+
+        // store data of ACCreateServices
+        public class service
+        {
+            public string ServiceName { get; set; }
+            public string ServiceDescrption { get; set; }
+            public int FuelTypeId { get; set; }
+            public int UnitTypeId { get; set; }
+            public decimal ServiceRate { get; set; }
+        }
+
         public ActionResult ACEditServices()
         {
             return View();

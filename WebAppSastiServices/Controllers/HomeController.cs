@@ -56,7 +56,6 @@ namespace WebAppSastiServices.Controllers
             ViewBag.FuelType = new SelectList(db.STPServicesFuelTypes.Where(f => f.STPServiceTypeID == serviceTypeId), "ID", "Options");
             ViewBag.UnitType = new SelectList(db.STPServicesUnitTypes.Where(u => u.STPServiceTypeID == serviceTypeId), "ID", "Options");
             ViewBag.preferredTime = new SelectList(db.STPPrefferedTimes, "ID", "TimeRange");
-
             return View();
         }
 
@@ -84,6 +83,15 @@ namespace WebAppSastiServices.Controllers
                 };
                 db.TRNCustomerOrders.Add(o);
                 db.SaveChanges();
+
+                
+
+
+            }
+
+            else
+            {
+                
             }
 
             return Redirect(Url.Action("Index", "Home"));

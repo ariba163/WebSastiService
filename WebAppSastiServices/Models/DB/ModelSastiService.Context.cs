@@ -28,8 +28,10 @@ namespace WebAppSastiServices.Models.DB
         }
     
         public virtual DbSet<STPBanner> STPBanners { get; set; }
+        public virtual DbSet<STPBannerOffer> STPBannerOffers { get; set; }
         public virtual DbSet<STPOrder> STPOrders { get; set; }
         public virtual DbSet<STPPrefferedTime> STPPrefferedTimes { get; set; }
+        public virtual DbSet<STPProductBrand> STPProductBrands { get; set; }
         public virtual DbSet<STPProductItem> STPProductItems { get; set; }
         public virtual DbSet<STPProductType> STPProductTypes { get; set; }
         public virtual DbSet<STPQuickCall> STPQuickCalls { get; set; }

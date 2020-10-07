@@ -26,7 +26,12 @@ namespace WebAppSastiServices.Models.DB
         public int STPServiceTypeID { get; set; }
         public bool IsAvailible { get; set; }
         public System.DateTime CreatedDateTime { get; set; }
+        public int FuelTypeId { get; set; }
+        public int UnitTypeId { get; set; }
+        public decimal ServiceRate { get; set; }
     
+        public virtual STPServicesFuelType STPServicesFuelType { get; set; }
+        public virtual STPServicesUnitType STPServicesUnitType { get; set; }
         public virtual STPServiceType STPServiceType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<STPProductItem> STPProductItems { get; set; }
